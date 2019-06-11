@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">AppEducacional</string>
+    <string name="Botao_Salvar">Salvar</string>
+    <string name="Login">Entrar</string>
+    <string name="Inscrição">Cadastrar-se</string>
+    <string name="info1">E-mail</string>
+    <string name="info2">Senha</string>
+    <string name="telainicial">Login:</string>
+    <string name="Titulo">Zoologia</string>
+</resources>

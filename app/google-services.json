@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "800159422362",
+    "firebase_url": "https://zoologia-dc0f8.firebaseio.com",
+    "project_id": "zoologia-dc0f8",
+    "storage_bucket": "zoologia-dc0f8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:800159422362:android:bbc4b6cf7cb7e105",
+        "android_client_info": {
+          "package_name": "com.example.appeducacional"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "800159422362-jomm58546h428lbea2lluj0qjr9b0nam.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.appeducacional",
+            "certificate_hash": "ff7cbace07f6586c8e9ae915dac0904f42085d3b"
+          }
+        },
+        {
+          "client_id": "800159422362-mb17hgkkik00kifug9t1tb5gnt0vabpk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAb6dTwnPVI_99DXb6jXfA-_IeqoT2D8Pg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "800159422362-mb17hgkkik00kifug9t1tb5gnt0vabpk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

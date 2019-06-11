@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:layout_marginBottom="7dp"
+    android:layout_marginLeft="7dp"
+    android:layout_marginRight="7dp"
+    android:layout_marginTop="7dp"
+    android:background="@drawable/mar"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="302dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="67dp"
+        android:layout_marginLeft="67dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:text="Cadastro de Aluno"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="147dp"
+        android:layout_height="113dp"
+        android:layout_marginEnd="210dp"
+        android:layout_marginRight="210dp"
+        android:layout_marginBottom="9dp"
+        app:layout_constraintBottom_toTopOf="@+id/NomeId"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:srcCompat="@drawable/ic_action_cadastro" />
+
+    <EditText
+        android:id="@+id/NomeId"
+        android:layout_width="230dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="94dp"
+        android:layout_marginRight="94dp"
+        android:layout_marginBottom="21dp"
+        android:background="@android:color/background_light"
+        android:ems="10"
+        android:hint="Nome"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/TurmaId"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/TurmaId"
+        android:layout_width="230dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="94dp"
+        android:layout_marginRight="94dp"
+        android:layout_marginBottom="18dp"
+        android:background="@android:color/background_light"
+        android:ems="10"
+        android:hint="Turma"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/EmailCadastroId"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/EmailCadastroId"
+        android:layout_width="230dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="94dp"
+        android:layout_marginRight="94dp"
+        android:layout_marginBottom="18dp"
+        android:background="@android:color/background_light"
+        android:ems="10"
+        android:hint="@string/info1"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/SenhaCadastroId"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/SenhaCadastroId"
+        android:layout_width="230dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="95dp"
+        android:layout_marginRight="95dp"
+        android:layout_marginBottom="13dp"
+        android:background="@android:color/background_light"
+        android:ems="10"
+        android:hint="@string/info2"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/ConfirmaSenhaId"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/ConfirmaSenhaId"
+        android:layout_width="230dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="95dp"
+        android:layout_marginRight="95dp"
+        android:layout_marginBottom="14dp"
+        android:background="@android:color/background_light"
+        android:ems="10"
+        android:hint="Confirmar Senha"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/ConfirmarId"
+        app:layout_constraintEnd_toEndOf="parent" />
+    <Button
+        android:id="@+id/ConfirmarId"
+        android:layout_width="160dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="164dp"
+        android:layout_marginRight="164dp"
+        android:text="Confirmar"
+        app:layout_constraintBottom_toTopOf="@+id/CancelarId"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/CancelarId"
+        android:layout_width="160dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="164dp"
+        android:layout_marginRight="164dp"
+        android:layout_marginBottom="108dp"
+        android:text="Cancelar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>
