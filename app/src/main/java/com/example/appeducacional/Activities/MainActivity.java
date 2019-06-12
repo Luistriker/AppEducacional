@@ -80,11 +80,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Toast.makeText(MainActivity.this,  "logado com sucesso", Toast.LENGTH_SHORT);
+                    Toast.makeText(MainActivity.this,  "logado com sucesso", Toast.LENGTH_SHORT).show();
                     AbrirTelaInformacoes();
 
                 }else{
-                    Toast.makeText(MainActivity.this, " Usuario ou senha invalidos", Toast.LENGTH_SHORT);
+                    Toast.makeText(MainActivity.this, " Usuario ou senha invalidos", Toast.LENGTH_SHORT).show();
                 }
             }
         });
