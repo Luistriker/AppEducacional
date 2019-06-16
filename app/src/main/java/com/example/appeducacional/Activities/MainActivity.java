@@ -2,12 +2,9 @@
 package com.example.appeducacional.Activities;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,8 +40,16 @@ public class MainActivity extends AppCompatActivity {
 
        if(usuarioLogado()){
            if(true){
-                Intent intentMinhaConta = new Intent(MainActivity.this, MenuActivity.class);
-                AbrirNovaActivity(intentMinhaConta);
+               if(usuario.getSenha().equals("adminmaster")){
+                   Intent intentMinhaConta = new Intent(MainActivity.this, MenuAdminActivity.class);
+                   startActivity(intentMinhaConta);
+               }else if(usuario.getSenha().equals("proflucianabio")){
+                   Intent intentMinhaconta = new Intent(MainActivity.this, MenuProfessorActivity.class);
+                   startActivity(intentMinhaconta);
+               }else{
+                   Intent intentMihaConta = new Intent(MainActivity.this, MenuAlunoActivity.class);
+                   startActivity(intentMihaConta);
+               }
            }else{
                Entrar.setOnClickListener(new View.OnClickListener() {
                    @Override
@@ -92,7 +97,19 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(MainActivity.this,  email +"logado com sucesso", Toast.LENGTH_SHORT).show();
-                    AbrirTelaDeMenu();
+
+                    if(usuario.getSenha().equals("adminmaster")){
+                        Intent intent = new Intent(MainActivity.this, MenuAdminActivity.class);
+                        startActivity(intent);
+                    }else if(usuario.getSenha().equals("proflucianabio")){
+                        Intent intent = new Intent(MainActivity.this, MenuProfessorActivity.class);
+                        startActivity(intent);
+                    }else{
+                        Intent intent = new Intent(MainActivity.this, MenuAlunoActivity.class);
+                        startActivity(intent);
+                    }
+
+
 
                 }else{
                     Toast.makeText(MainActivity.this, " Usuario ou senha invalidos", Toast.LENGTH_SHORT).show();
@@ -101,10 +118,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void AbrirTelaDeMenu(){
-        Intent intent = new Intent(MainActivity.this, MenuActivity.class);
-        startActivity(intent);
-    }
+
 
     public  Boolean usuarioLogado(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
