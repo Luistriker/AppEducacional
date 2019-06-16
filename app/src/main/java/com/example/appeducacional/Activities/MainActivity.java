@@ -41,32 +41,43 @@ public class MainActivity extends AppCompatActivity {
         Entrar = (Button) findViewById(R.id.EntrarId);
         Cadastrar = (Button)findViewById(R.id.CadastroId);
 
-        Entrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            String EmailDigitado = TextoEmail.getText().toString();
-            String SenhaDigitada = TextoSenha.getText().toString();
+       if(usuarioLogado()){
+           if(true){
+                Intent intentMinhaConta = new Intent(MainActivity.this, MenuActivity.class);
+                AbrirNovaActivity(intentMinhaConta);
+           }else{
+               Entrar.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View v) {
+                       String EmailDigitado = TextoEmail.getText().toString();
+                       String SenhaDigitada = TextoSenha.getText().toString();
 
-            if(!EmailDigitado.equals("") && !SenhaDigitada.equals("")){
-                usuario = new Usuarios();
-                usuario.setEmail(EmailDigitado);
-                usuario.setSenha(SenhaDigitada);
-                validarLogin();
+                       if(!EmailDigitado.equals("") && !SenhaDigitada.equals("")){
+                           usuario = new Usuarios();
+                           usuario.setEmail(EmailDigitado);
+                           usuario.setSenha(SenhaDigitada);
+                           validarLogin(usuario.getEmail());
 
-            }else if(EmailDigitado.equals("")){
-                TextoEmail.setError("Erro digite seu e-mail");
+                       }else if(EmailDigitado.equals("")){
+                           TextoEmail.setError("Erro digite seu e-mail");
 
-            }else{
-                TextoSenha.setError("Erro digite sua senha");
-            }
+                       }else{
+                           TextoSenha.setError("Erro digite sua senha");
+                       }
 
-            }
-        });
+                   }
+               });
+           }
+
+       }
+
+
 
         Cadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intentCadastro = new Intent(MainActivity.this, CadastroActivity.class);
+                AbrirNovaActivity(intentCadastro);
             }
         });
 
@@ -74,25 +85,40 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void validarLogin(){
+    private void validarLogin(final String email){
         autenticacao = ConfiguracaoFireBase.getFirebaseAuth();
-        autenticacao.signInWithEmailAndPassword(usuario.getEmail().toString(),usuario.getSenha().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        autenticacao.signInWithEmailAndPassword(usuario.getEmail(),usuario.getSenha()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Toast.makeText(MainActivity.this,  "logado com sucesso", Toast.LENGTH_SHORT);
-                    AbrirTelaInformacoes();
+                    Toast.makeText(MainActivity.this,  email +"logado com sucesso", Toast.LENGTH_SHORT).show();
+                    AbrirTelaDeMenu();
 
                 }else{
-                    Toast.makeText(MainActivity.this, " Usuario ou senha invalidos", Toast.LENGTH_SHORT);
+                    Toast.makeText(MainActivity.this, " Usuario ou senha invalidos", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
-    private void AbrirTelaInformacoes(){
+    private void AbrirTelaDeMenu(){
         Intent intent = new Intent(MainActivity.this, MenuActivity.class);
         startActivity(intent);
     }
+
+    public  Boolean usuarioLogado(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user != null){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+    public void AbrirNovaActivity(Intent intent){
+        startActivity(intent);
+    }
+
 
 }
