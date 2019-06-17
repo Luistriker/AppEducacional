@@ -16,6 +16,7 @@ public class ConfiguracaoFireBase {
         return ReferenciaFirebase;
     }
 
+    //Verifica se a autenticação está nula
     public static FirebaseAuth getFirebaseAuth(){
         if(autenticacao == null){
             autenticacao = FirebaseAuth.getInstance();

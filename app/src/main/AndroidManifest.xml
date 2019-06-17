@@ -17,7 +17,14 @@
             </intent-filter>
         </activity>
 
-    <activity android:name=".Activities.MenuActivity"/>
+
+
+    <activity android:name=".Activities.MenuAlunoActivity"/>
+        <activity android:name=".Activities.MenuProfessorActivity"/>
+        <activity android:name=".Activities.MenuAdminActivity"/>
+        <activity android:name=".Activities.CadastroActivity"/>
+        <activity android:name=".Activities.InformacoesActivity"/>
+        <activity android:name=".Activities.QuizActivity"/>
     </application>
 
 </manifest>

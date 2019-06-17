@@ -47,7 +47,6 @@
         android:background="@android:color/background_light"
         android:ems="10"
         android:hint="Nome"
-        android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/TurmaId"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -61,7 +60,6 @@
         android:background="@android:color/background_light"
         android:ems="10"
         android:hint="Turma"
-        android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/EmailCadastroId"
         app:layout_constraintStart_toStartOf="parent" />
 
