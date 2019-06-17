@@ -16,6 +16,7 @@ import static com.example.appeducacional.R.menu.activity_menu_aluno;
 
 public class MenuAlunoActivity extends AppCompatActivity {
 
+
     // objeto do tipo autenticação
     private FirebaseAuth autenticacao;
 
@@ -26,15 +27,17 @@ public class MenuAlunoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(activity_menu_aluno);
 
+
         //pega a instância do usuário
         autenticacao = FirebaseAuth.getInstance();
 
     }
 
+
     //Ativa a tela de menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(activity_menu_aluno,menu);
+        getMenuInflater().inflate(activity_menu_aluno, menu);
         return true;
     }
 
@@ -44,30 +47,33 @@ public class MenuAlunoActivity extends AppCompatActivity {
         //pega a o id da opção que o usuário excolheu e verifica
         int id = item.getItemId();
         //chama tela de informações sobre o conteudo
-        if(id == R.id.acao_informacao_id){
-            Intent intent = new Intent(MenuAlunoActivity.this,InformacoesActivity.class);
+        if (id == R.id.acao_informacao_id) {
+            Intent intent = new Intent(MenuAlunoActivity.this, InformacoesActivity.class);
             startActivity(intent);
-        //chama tela do quiz para os alunos
-        }else if(id == R.id.acao_jogar_id){
-            Intent intent = new Intent(MenuAlunoActivity.this,QuizActivity.class);
+            //chama tela do quiz para os alunos
+        } else if (id == R.id.acao_jogar_id) {
+            Intent intent = new Intent(MenuAlunoActivity.this, QuizActivity.class);
             startActivity(intent);
-        //Chama a função para deslogar da conta
-        }else if(id == R.id.acao_sair_id){
-            Intent intent = new Intent(MenuAlunoActivity.this,MainActivity.class);
-            deslogarUsuario(intent);
         }
-        return super.onOptionsItemSelected(item);
-    }
+        //Chama a função para deslogar da conta
+        else if (id == R.id.acao_sair_id) {
+                Intent intent = new Intent(MenuAlunoActivity.this, MainActivity.class);
+                deslogarUsuario(intent);
+            }
+            return super.onOptionsItemSelected(item);
+        }
 
-    //Função para deslogar o usuário
-    private void deslogarUsuario(Intent intent){
+
+        //Função para deslogar o usuário
+        private void deslogarUsuario(Intent intent){
             autenticacao.signOut();
             AbrirNovaActivity(intent);
             finish();
-    }
-    //Função genérica para estartar uma nova activity
-    public void AbrirNovaActivity(Intent intent){
-        startActivity(intent);
-    }
+        }
 
-}
+        //Função genérica para estartar uma nova activity
+        public void AbrirNovaActivity(Intent intent){
+            startActivity(intent);
+        }
+
+    }
