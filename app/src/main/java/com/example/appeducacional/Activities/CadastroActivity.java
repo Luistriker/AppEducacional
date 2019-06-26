@@ -1,5 +1,6 @@
 package com.example.appeducacional.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.appeducacional.Activities.MainActivity;
 import com.example.appeducacional.Classes.Usuarios;
 import com.example.appeducacional.DAO.ConfiguracaoFireBase;
 import com.example.appeducacional.R;
@@ -34,8 +36,8 @@ public class CadastroActivity extends AppCompatActivity {
     //Objeto do tipo autenticação
     private FirebaseAuth autenticacao;
     //Objetos do tipo banco de dados para armazenar informações
-    private FirebaseDatabase database;
-    private DatabaseReference referencia;
+    public static FirebaseDatabase database;
+    private  DatabaseReference referencia;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -73,11 +75,12 @@ public class CadastroActivity extends AppCompatActivity {
                         usuario.setTurma(TurmaDigitada);
                         usuario.setEmail(EmailDigitado);
                         usuario.setSenha(SenhaDigitada);
-
-                    }else{
-                      ConfirmaSenha.setError("A senha não é igual, digite novamente");
-                    }
                         cadastrarUsuario();
+                    }else{
+                      ConfirmaSenha.setError("Digite novamente");
+                      Toast.makeText(CadastroActivity.this, "A senhas não coincidem",Toast.LENGTH_SHORT).show();
+                    }
+
 
                 }else if(NomeDigitado.equals("") && TurmaDigitada.equals("") &&  EmailDigitado.equals("") && SenhaDigitada.equals("") && ConfirmarSenhaDigitada.equals("")){
                     Nome.setError("Erro digite seu Nome");
@@ -86,21 +89,24 @@ public class CadastroActivity extends AppCompatActivity {
                     Senha.setError("Erro digite sua Senha");
                     ConfirmaSenha.setError("Erro digite sua Senha Novamente");
 
-                }else if(NomeDigitado.equals("")){
-                    Nome.setError("Erro digite seu Nome");
+                }else{
+                    if(NomeDigitado.equals("")){
+                        Nome.setError("Erro digite seu Nome");
 
-                }else if(TurmaDigitada.equals("")){
-                    Turma.setError("Erro digite sua Turma");
+                    }if(TurmaDigitada.equals("")){
+                        Turma.setError("Erro digite sua Turma");
 
-                }else if(EmailDigitado.equals("")){
-                    Email.setError("Erro digite seu E-mail");
+                    }if(EmailDigitado.equals("")){
+                        Email.setError("Erro digite seu E-mail");
 
-                }else if(SenhaDigitada.equals("")){
-                    Senha.setError("Erro digite sua Senha");
+                    }if(SenhaDigitada.equals("")){
+                        Senha.setError("Erro digite sua Senha");
 
-                }else {
-                    Nome.setError("Erro digite sua Senha Novamente");
+                    }if(ConfirmarSenhaDigitada.equals("")){
+                        Nome.setError("Erro digite sua Senha Novamente");
+                    }
                 }
+
 
 
 
@@ -128,6 +134,7 @@ public class CadastroActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
 
                             insereUsuario(usuario);
+                            validarLogin(usuario.getEmail());
 
                         }else{
                             String erroExecao = "";
@@ -168,4 +175,39 @@ public class CadastroActivity extends AppCompatActivity {
                     return false;
                 }
         }
+
+    //Função que verifica se o usuário esta contido no Banco de dados e valida sua entrada
+    private void validarLogin(final String email){
+        autenticacao = ConfiguracaoFireBase.getFirebaseAuth();
+        autenticacao.signInWithEmailAndPassword(usuario.getEmail(),usuario.getSenha()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+
+
+                    //Verificação do tipo de usuário(adm,aluno,professor)
+                    if(usuario.getSenha().equals("adminmaster")){
+                        Toast.makeText(CadastroActivity.this, email+" Logado com sucesso", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(CadastroActivity.this, MenuAdminActivity.class);
+                        startActivity(intent);
+                    }else if(usuario.getSenha().equals("proflucianabio")){
+                        Toast.makeText(CadastroActivity.this, email+" Logado com sucesso", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(CadastroActivity.this, MenuProfessorActivity.class);
+                        startActivity(intent);
+                    }else{
+                        Toast.makeText(CadastroActivity.this, email+" Logado com sucesso", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(CadastroActivity.this, MenuAlunoActivity.class);
+                        startActivity(intent);
+                    }
+
+                }else{
+                    Toast.makeText(CadastroActivity.this, " Não foi possivel Fazer login direto,tente logar manualmente", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(CadastroActivity.this,MainActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+    }
+
+
 }

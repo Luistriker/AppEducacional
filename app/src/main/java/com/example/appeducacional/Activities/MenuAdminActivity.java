@@ -7,7 +7,7 @@ import android.view.View;
 
 import com.example.appeducacional.R;
 
-import static com.example.appeducacional.R.menu.activity_admin;
+
 
 public class MenuAdminActivity extends AppCompatActivity {
 
@@ -15,7 +15,7 @@ public class MenuAdminActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(activity_admin);
+        setContentView(R.layout.activity_menu_admin);
 
 
 

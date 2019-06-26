@@ -1,20 +1,17 @@
 package com.example.appeducacional.Classes;
 
+import com.google.firebase.database.Exclude;
+
 public class Usuarios {
 
-    private int id;
+
     private String Nome;
     private String Turma;
     private String Email;
     private String Senha;
+    private int Score=0;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getNome() {
         return Nome;
@@ -40,13 +37,24 @@ public class Usuarios {
         Email = email;
     }
 
+    @Exclude
     public String getSenha() {
         return Senha;
     }
 
+    @Exclude
     public void setSenha(String senha) {
         Senha = senha;
     }
+
+    public int getScore() {
+        return Score;
+    }
+
+    public void setScore(int score) {
+        Score = score;
+    }
+
 
 
 

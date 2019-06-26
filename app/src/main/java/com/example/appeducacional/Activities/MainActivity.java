@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText TextoEmail,TextoSenha;
     private Button Entrar,Cadastrar;
-    private Usuarios usuario;
-    private FirebaseAuth autenticacao;
+    public static Usuarios usuario;
+    public static FirebaseAuth autenticacao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                if(usuario.getSenha().equals("adminmaster")){
                    Intent intentMinhaConta = new Intent(MainActivity.this, MenuAdminActivity.class);
                    AbrirNovaActivity(intentMinhaConta);
-               }else if(usuario.getSenha().equals("porflucianabio")){
+               }else if(usuario.getSenha().equals("proflucianabio")){
                    Intent intentMinhaConta = new Intent(MainActivity.this, MenuProfessorActivity.class);
                    AbrirNovaActivity(intentMinhaConta);
                }else{

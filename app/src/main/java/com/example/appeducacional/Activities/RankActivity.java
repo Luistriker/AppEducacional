@@ -1,22 +1,15 @@
 package com.example.appeducacional.Activities;
 
-
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.appeducacional.R;
 
-
-public class MenuProfessorActivity extends AppCompatActivity {
-
-
+public class RankActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_professor);
-
-
-
+        setContentView(R.layout.activity_rank);
     }
 
 }

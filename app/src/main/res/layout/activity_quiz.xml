@@ -1,6 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/planofolhas"
+    android:padding="16dp">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/text1_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pontuação:"
+        android:textColor="@android:color/black" />
+    <TextView
+        android:id="@+id/pontuacao_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:text="0"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/text2_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pontuacao_id"
+        android:text="Número da questão:"
+        android:textColor="@android:color/black" />
+    <TextView
+        android:id="@+id/qtd_questoes_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pontuacao_id"
+        android:layout_marginLeft="140dp"
+        android:text="1"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/timer_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:text="00:30"
+        android:textColor="@android:color/black"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/questoes_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="16dp"
+        android:text="Questão"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/questao_id"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorAccent"
+        android:text="Informação"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="22sp" />
+
+
+    <RadioGroup
+        android:id="@+id/alternativas_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="288dp">
+
+        <RadioButton
+            android:id="@+id/opcao_a_id"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:text="Letra a" />
+
+        <RadioButton
+            android:id="@+id/opcao_b_id"
+            android:layout_width="wrap_content"
+            android:layout_height="54dp"
+            android:text="Letra b" />
+
+        <RadioButton
+            android:id="@+id/opcao_c_id"
+            android:layout_width="wrap_content"
+            android:layout_height="52dp"
+            android:text="Letra c" />
+
+        <RadioButton
+            android:id="@+id/opcao_d_id"
+            android:layout_width="wrap_content"
+            android:layout_height="54dp"
+            android:text="Letra d" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/letra_a_id"
+        android:layout_width="290dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="295dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorAccent"
+        android:text="Opcao"
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/letra_b_id"
+        android:layout_width="290dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="348dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorAccent"
+        android:text="Opcao"
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/letra_c_id"
+        android:layout_width="290dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="402dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorAccent"
+        android:text="Opcao"
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/letra_d_id"
+        android:layout_width="290dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="455dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorAccent"
+        android:text="Opcao"
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/confirma_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/alternativas_id"
+        android:layout_marginTop="24dp"
+        android:background="@color/colorPrimaryDark"
+        android:scrollbarSize="4dp"
+        android:text="Confirmar"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/text_id"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginTop="600dp"
+        android:text="Resposta:"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/resposta_id"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="600dp"
+        android:background="@color/colorAccent"
+        android:text="Resposta"
+        android:textColor="@android:color/black" />
+
+</RelativeLayout>
