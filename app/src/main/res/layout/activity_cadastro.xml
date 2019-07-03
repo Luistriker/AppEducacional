@@ -8,24 +8,13 @@
     android:background="@drawable/planofolhas"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="147dp"
-        android:layout_height="113dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginLeft="76dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/NomeId"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:srcCompat="@drawable/ic_action_cadastro" />
-
     <EditText
         android:id="@+id/NomeId"
-        android:layout_width="230dp"
+        android:layout_width="300dp"
         android:layout_height="30dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginLeft="104dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginBottom="8dp"
         android:background="@android:color/background_light"
         android:ems="10"
         android:hint="Nome"
@@ -35,11 +24,11 @@
 
     <EditText
         android:id="@+id/TurmaId"
-        android:layout_width="230dp"
+        android:layout_width="300dp"
         android:layout_height="30dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginLeft="104dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginBottom="8dp"
         android:background="@android:color/background_light"
         android:ems="10"
         android:hint="Turma"
@@ -48,11 +37,11 @@
 
     <EditText
         android:id="@+id/EmailCadastroId"
-        android:layout_width="230dp"
+        android:layout_width="300dp"
         android:layout_height="30dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginLeft="104dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginBottom="8dp"
         android:background="@android:color/background_light"
         android:ems="10"
         android:hint="@string/info1"
@@ -62,11 +51,11 @@
 
     <EditText
         android:id="@+id/SenhaCadastroId"
-        android:layout_width="230dp"
+        android:layout_width="300dp"
         android:layout_height="30dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginLeft="104dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginBottom="8dp"
         android:background="@android:color/background_light"
         android:ems="10"
         android:hint="@string/info2"
@@ -76,11 +65,11 @@
 
     <EditText
         android:id="@+id/ConfirmaSenhaId"
-        android:layout_width="230dp"
+        android:layout_width="300dp"
         android:layout_height="30dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginLeft="104dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginBottom="8dp"
         android:background="@android:color/background_light"
         android:ems="10"
         android:hint="Confirmar Senha"
@@ -90,49 +79,42 @@
 
     <Button
         android:id="@+id/ConfirmarId"
-        android:layout_width="160dp"
+        android:layout_width="180dp"
         android:layout_height="46dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginLeft="104dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
         android:text="Confirmar"
         app:layout_constraintBottom_toTopOf="@+id/CancelarId"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/CancelarId"
-        android:layout_width="160dp"
+        android:layout_width="180dp"
         android:layout_height="46dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginLeft="104dp"
-        android:layout_marginBottom="128dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginBottom="168dp"
         android:text="Cancelar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="184dp"
-        android:layout_height="186dp"
-        android:layout_marginEnd="276dp"
-        android:layout_marginRight="276dp"
-        android:layout_marginBottom="472dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/aranhacanto" />
 
-    <ImageView
+    <TextView
         android:id="@+id/imageView4"
-        android:layout_width="201dp"
-        android:layout_height="53dp"
+        android:layout_width="268dp"
+        android:layout_height="75dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:text="Cadastro"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cadastro" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

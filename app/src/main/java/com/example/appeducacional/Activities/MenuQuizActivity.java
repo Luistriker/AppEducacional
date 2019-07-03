@@ -34,6 +34,7 @@ public class MenuQuizActivity extends AppCompatActivity {
         Voltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
                 Intent intent = new Intent(MenuQuizActivity.this, MenuAlunoActivity.class);
                 AbrirNovaActivity(intent);
             }

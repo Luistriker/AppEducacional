@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.appeducacional.Activities.MainActivity;
 import com.example.appeducacional.Classes.Usuarios;
 import com.example.appeducacional.DAO.ConfiguracaoFireBase;
 import com.example.appeducacional.R;
@@ -19,7 +18,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.database.DatabaseReference;
@@ -27,22 +26,27 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.EnumMap;
 
+import static com.example.appeducacional.Activities.MainActivity.usuario;
+
 public class CadastroActivity extends AppCompatActivity {
 
     private EditText Nome,Turma,Email,Senha,ConfirmaSenha;
     private Button Cadastrar,Cancelar;
-    private Usuarios usuario;
+
+
 
     //Objeto do tipo autenticação
     private FirebaseAuth autenticacao;
     //Objetos do tipo banco de dados para armazenar informações
-    public static FirebaseDatabase database;
-    private  DatabaseReference referencia;
+    public static FirebaseDatabase database = FirebaseDatabase.getInstance();
+    public static DatabaseReference referenciaAluno;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
+
+        referenciaAluno = database.getReference("Usuarios");
 
         //Associa os campos do xml as variáveis de mesmo tipo
         Nome = (EditText) findViewById(R.id.NomeId);
@@ -103,7 +107,7 @@ public class CadastroActivity extends AppCompatActivity {
                         Senha.setError("Erro digite sua Senha");
 
                     }if(ConfirmarSenhaDigitada.equals("")){
-                        Nome.setError("Erro digite sua Senha Novamente");
+                        ConfirmaSenha.setError("Erro digite sua Senha Novamente");
                     }
                 }
 
@@ -116,7 +120,8 @@ public class CadastroActivity extends AppCompatActivity {
         Cancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                    Intent intent = new Intent(CadastroActivity.this,MainActivity.class);
+                    startActivity(intent);
             }
         });
 
@@ -164,8 +169,8 @@ public class CadastroActivity extends AppCompatActivity {
 
         private boolean insereUsuario( Usuarios usuario){
                 try{
-                    referencia = ConfiguracaoFireBase.getFirebase().child("usuários");
-                    referencia.push().setValue(usuario);
+                    String id = referenciaAluno.push().getKey();
+                    referenciaAluno.child(id).setValue(usuario);
                     Toast.makeText(CadastroActivity.this, "Usuário cadastrado com sucesso", Toast.LENGTH_SHORT).show();
                     return true;
                 }
@@ -183,22 +188,10 @@ public class CadastroActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-
-
-                    //Verificação do tipo de usuário(adm,aluno,professor)
-                    if(usuario.getSenha().equals("adminmaster")){
                         Toast.makeText(CadastroActivity.this, email+" Logado com sucesso", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(CadastroActivity.this, MenuAdminActivity.class);
-                        startActivity(intent);
-                    }else if(usuario.getSenha().equals("proflucianabio")){
-                        Toast.makeText(CadastroActivity.this, email+" Logado com sucesso", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(CadastroActivity.this, MenuProfessorActivity.class);
-                        startActivity(intent);
-                    }else{
-                        Toast.makeText(CadastroActivity.this, email+" Logado com sucesso", Toast.LENGTH_SHORT).show();
+                        finish();
                         Intent intent = new Intent(CadastroActivity.this, MenuAlunoActivity.class);
                         startActivity(intent);
-                    }
 
                 }else{
                     Toast.makeText(CadastroActivity.this, " Não foi possivel Fazer login direto,tente logar manualmente", Toast.LENGTH_SHORT).show();

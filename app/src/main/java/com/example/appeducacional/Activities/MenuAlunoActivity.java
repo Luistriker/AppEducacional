@@ -11,13 +11,13 @@ import android.widget.Toast;
 import com.example.appeducacional.R;
 import com.google.firebase.auth.FirebaseAuth;
 
-import static com.example.appeducacional.Activities.MainActivity.autenticacao;
+//import static com.example.appeducacional.Activities.MainActivity.autenticacao;
 
 
 public class MenuAlunoActivity extends AppCompatActivity {
 
     private Button Quiz,Info,Sair,Rank;
-
+    private FirebaseAuth autenticacao;
 
     // objeto do tipo autenticação
 
@@ -85,31 +85,3 @@ public class MenuAlunoActivity extends AppCompatActivity {
     }
 
 }
-//Ativa a tela de menu
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(activity_menu_aluno, menu);
-        return true;
-    }
-
-    //Chama uma nova tela dependendo de qual opção de menu o usuário escolheu
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        //pega a o id da opção que o usuário excolheu e verifica
-        int id = item.getItemId();
-        //chama tela de informações sobre o conteudo
-        if (id == R.id.acao_informacao_id) {
-            Intent intent = new Intent(MenuAlunoActivity.this, InformacoesActivity.class);
-            startActivity(intent);
-            //chama tela do quiz para os alunos
-        } else if (id == R.id.acao_jogar_id) {
-            Intent intent = new Intent(MenuAlunoActivity.this, QuizActivity.class);
-            startActivity(intent);
-        }
-        //Chama a função para deslogar da conta
-        else if (id == R.id.acao_sair_id) {
-                Intent intent = new Intent(MenuAlunoActivity.this, MainActivity.class);
-                deslogarUsuario(intent);
-            }
-            return super.onOptionsItemSelected(item);
-        }*/

@@ -37,12 +37,10 @@ public class Usuarios {
         Email = email;
     }
 
-    @Exclude
     public String getSenha() {
         return Senha;
     }
 
-    @Exclude
     public void setSenha(String senha) {
         Senha = senha;
     }

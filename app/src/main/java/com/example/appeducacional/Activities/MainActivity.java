@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText TextoEmail,TextoSenha;
     private Button Entrar,Cadastrar;
     public static Usuarios usuario;
-    public static FirebaseAuth autenticacao;
+    private FirebaseAuth autenticacao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,51 +41,46 @@ public class MainActivity extends AppCompatActivity {
         //Verificação de usuario logado
        if(usuarioLogado()){
            //Se ja estiver logado vai para tela de menu
-           if(true){
-               //Verificação do tipo de usuário(adm,aluno,professor)
-               if(usuario.getSenha().equals("adminmaster")){
-                   Intent intentMinhaConta = new Intent(MainActivity.this, MenuAdminActivity.class);
-                   AbrirNovaActivity(intentMinhaConta);
-               }else if(usuario.getSenha().equals("proflucianabio")){
-                   Intent intentMinhaConta = new Intent(MainActivity.this, MenuProfessorActivity.class);
-                   AbrirNovaActivity(intentMinhaConta);
-               }else{
-                   Intent intentMinhaConta = new Intent(MainActivity.this, MenuAlunoActivity.class);
-                   AbrirNovaActivity(intentMinhaConta);
-               }
-           //Caso não esteja logado ao clicar no botão entrar faz verificaçao de e-mail e senha
+           if(true) {
+               Intent intentMinhaConta = new Intent(MainActivity.this, MenuAlunoActivity.class);
+               AbrirNovaActivity(intentMinhaConta);
            }else{
-               //Evento ao clicar no botao de entrar que loga o usuário
-               Entrar.setOnClickListener(new View.OnClickListener() {
-                   @Override
-                   public void onClick(View v) {
-                       String EmailDigitado = TextoEmail.getText().toString();
-                       String SenhaDigitada = TextoSenha.getText().toString();
-                       //Verificação de campos digitados corretamente
-                       if(!EmailDigitado.equals("") && !SenhaDigitada.equals("")){
-                           //Salva as informação na classe usuário
-                           usuario = new Usuarios();
-                           usuario.setEmail(EmailDigitado);
-                           usuario.setSenha(SenhaDigitada);
-                           validarLogin(usuario.getEmail());
-
-                       }else if(EmailDigitado.equals("") && SenhaDigitada.equals("")){
-                           TextoEmail.setError("Erro digite seu e-mail");
-                           TextoSenha.setError("Erro digite sua senha");
-
-                       }else if(SenhaDigitada.equals("")){
-                           TextoSenha.setError("Erro digite sua senha");
-
-                       }else{
-                           TextoEmail.setError("Erro digite seu e-mail");
-                       }
-
-                   }
-               });
+               Toast.makeText(MainActivity.this, "Nenhum Usuario logado", Toast.LENGTH_SHORT).show();
            }
 
        }
 
+        //Caso não esteja logado ao clicar no botão entrar faz verificaçao de e-mail e senha
+       //Evento ao clicar no botao de entrar que loga o usuário
+       Entrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String EmailDigitado = TextoEmail.getText().toString();
+                String SenhaDigitada = TextoSenha.getText().toString();
+
+
+                //Verificação de campos digitados corretamente
+                if(!EmailDigitado.equals("") && !SenhaDigitada.equals("")){
+                    //Salva as informação na classe usuário
+                    usuario = new Usuarios();
+                    usuario.setEmail(EmailDigitado);
+                    usuario.setSenha(SenhaDigitada);
+                    validarLogin(usuario.getEmail());
+
+                }if(EmailDigitado.equals("") && SenhaDigitada.equals("")){
+                    TextoEmail.setError("Erro digite seu e-mail");
+                    TextoSenha.setError("Erro digite sua senha");
+
+                }else if(SenhaDigitada.equals("")){
+                    TextoSenha.setError("Erro digite sua senha");
+
+                }else{
+                    TextoEmail.setError("Erro digite seu e-mail");
+                }
+
+            }
+        });
 
         //Botao que chama a tela de cadastro
         Cadastrar.setOnClickListener(new View.OnClickListener() {
@@ -107,21 +102,10 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
 
-
-                    //Verificação do tipo de usuário(adm,aluno,professor)
-                    if(usuario.getSenha().equals("adminmaster")){
-                        Toast.makeText(MainActivity.this, email+" Logado com sucesso", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainActivity.this, MenuAdminActivity.class);
-                        startActivity(intent);
-                    }else if(usuario.getSenha().equals("proflucianabio")){
-                        Toast.makeText(MainActivity.this, email+" Logado com sucesso", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainActivity.this, MenuProfessorActivity.class);
-                        startActivity(intent);
-                    }else{
                         Toast.makeText(MainActivity.this, email+" Logado com sucesso", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(MainActivity.this, MenuAlunoActivity.class);
                         startActivity(intent);
-                    }
+
 
                 }else{
                     Toast.makeText(MainActivity.this, " Usuario ou senha invalidos", Toast.LENGTH_SHORT).show();
